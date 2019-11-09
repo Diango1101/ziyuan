@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>资源网</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../static/js/script2.js"></script>
+</head>
+<body>
+
+
+
+<div id="container">
+    <div id="header">
+        <p>	<img src="../static/images/banner1 (2).jpg"></p>
+
+    </div>
+
+    <div id="nav">
+        <p>
+            <a href="/tomyblogt">个人主页</a>|
+            <a href="/showjingping">精品课程</a>|
+            <a href="QueryByClick">课程查询</a>|
+            <a href="/opennewcour">申请开课</a>|
+            <a href="/tomanagement">管理课程</a>|
+        </p>
+    </div>
+
+    <div id="main">
+        <div id="aside">
+            <!--<form action="/editsname">-->
+
+            <!--<input type="text" name="name" th:text="${name}+'同学'">-->
+            <!--<input type="submit" class="magenta btn" id="edit-name" value="编辑" >-->
+            <!--</form>-->
+
+            <div id="imglist" >
+                <div class="polaroid rotate_left">
+                    <img src="../static/images/1.jpg"  />
+                </div>
+                <br>
+                <br>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div id="content">
+            <div >
+
+
+                <form action="/opencour" enctype="multipart/form-data" method="post">
+                    <div>
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <td>标签</td>
+                                <td>内容</td>
+
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>课程号：</td>
+                                <td><input type="text" name="cid"></td>
+                            </tr>
+                            <!--<a class="blue btn" onclick="Upload()" href="#">上传</a>-->
+                            <!--<input type="file" value="上传" id="Word" name="Word" style="display: none"/>-->
+                            <tr>
+                                <td>课件：</td>
+                                <td><input type="file" name="ppt" value="上传" ></td>
+                            </tr>
+                            <tr>
+                                <td>课程名：</td>
+                                <td><input type="text" name="cname" ></td>
+                            </tr>
+                            <tr>
+                                <td>标签：</td>
+                                <td><input type="text" name="label"></td>
+                            </tr>
+                            <tr>
+                                <td>进度表：</td>
+                                <td><input type="file" name="processchart" value="上传"></td>
+                            </tr>
+                            <tr>
+                                <td>大纲：</td>
+                                <td><input type="file" name="outline" value="上传"></td>
+                            </tr>
+                            <tr>
+                                <td>指导书：</td>
+                                <td><input type="file" name="exinstruct" value="上传"></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <input type="submit" class="magenta btn" id="sub4" value="提交" >
+                    <input type="reset" class="magenta btn" id="re4"  value="重置"  >
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>diango版权 2019-2020</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

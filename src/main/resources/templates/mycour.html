@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>资源网</title>	
+	<link rel="stylesheet" href="../static/css/style.css" />
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/script2.js"></script>
+    <script type="text/javascript">
+        UploadCode=function(){
+            document.getElementById("Code").click();
+        }
+    </script>
+</head>
+<body>
+
+
+
+<div id="container">
+  <div id="header">
+  	<p>	<img src="../static/images/banner1 (2).jpg"></p>
+  	
+  </div>
+  
+  <div id="nav">
+  	    <p>
+			<a href="/tomyblog">个人主页</a>|
+			<a href="/showjingping">精品课程</a>|
+			<a href="/QueryByClick-s">课程查询</a>|
+			<a href="/GetMyCour">我的课程</a>|
+		</p>
+  </div>
+
+  <div id="main"> 
+	  <div id="aside">
+	  	<h2></h2>
+		
+		<div id="imglist" >
+			<div class="polaroid rotate_left">
+				<img src="../static/images/1.jpg"  />
+			</div>
+			
+		</div>
+      </div>
+		
+	  
+
+	  <div id="content">
+	         
+	         	<h1>我的课程</h1>
+	         	<br />
+	         	<br />
+
+		  <table class="table table-striped table-hover table-bordered">
+				<tr>
+					<th width=90px;>课程号</th>
+					<th width=90px;>课程名</th>
+					<th width=90px;>成绩</th>
+					<th width=80px;>课件下载</th>
+					<th width=100px;>上传实践作品文档</th>
+                    <th width=100px;>上传实践作品代码</th>
+                    <th width="80px";></th>
+				</tr>
+				<tr th:each="Mycour:${Mycours}">
+					<form th:action="@{Upload(Cid=${Mycour.Cid})}" enctype="multipart/form-data" method="post" name="form2">
+					<td align="center"><a class="blue btn" th:text="${Mycour.Cid}" th:href="@{SelectWho(context=${Mycour.Cid})}"></a></td><!-- th:href="@{#Cid=${}"  自己加你要的东西-->
+                    <td align="center" th:text="${Mycour.Cname}"></td>
+                    <td align="center" th:text="${Mycour.Grade}">
+					</td>
+					<td>
+                        <div align="center">
+						    <a class="blue btn" th:href="@{/DownloadPpt(filename=${Mycour.ppt})}";>下载</a>
+                        </div>
+					</td>
+					<td>
+                        <div align="center">
+							<a class="blue btn" onclick="Upload()" href="#">上传</a>
+							<input type="file" value="上传" id="Word" name="Word" style="display: none"/>
+							<!--style="display: none"-->
+                        </div>
+                        <div align="center">
+                            <input type="text" th:value="${Mycour.Work_word}" name="Work_word" style="display: none">
+                            <span th:text="${Mycour.Work_word}"></span>
+                        </div>
+					</td>
+                    <td>
+                        <div align="center">
+                            <a class="blue btn" onclick="UploadCode()" href="#">上传</a>
+                            <input type="file" value="上传" id="Code" name="Code" style="display: none"/>
+                        </div>
+                        <div align="center">
+                            <input type="text" th:value="${Mycour.Work_code}" name="Work_code" style="display: none">
+                            <span th:text="${Mycour.Work_code}"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="submit" class="blue btn">
+                    </td>
+					</form>
+				</tr>
+			  </table>
+
+      </div>
+  </div>
+1
+  <div id="footer">
+  	<p>diango版权 2019-2020</p>
+  </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>资源网</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+
+
+<div id="container">
+    <div id="header">
+        <p>	<img src="../static/images/banner1 (2).jpg"></p>
+
+    </div>
+
+    <div id="nav">
+        <p>
+            <a href="/tomyblog">个人主页</a>|
+            <a href="/showjingping">精品课程</a>|
+            <a href="/QueryByClick-s">课程查询</a>|
+            <a href="/GetMyCour">我的课程</a>|
+        </p>
+    </div>
+
+    <div id="main">
+        <div id="aside">
+            <form action="/editsname">
+
+                <input type="text" name="name" th:text="${name}+'同学'">
+                <input type="submit" class="magenta btn" id="edit-name" value="编辑姓名" >
+            </form>
+            <form action="/editspwd">
+
+                <input type="text" name="pwd" >
+                <input type="submit" class="magenta btn"  value="编辑密码" >
+            </form>
+
+            <div id="imglist" >
+                <div class="polaroid rotate_left">
+                    <img src="../static/images/1.jpg"  />
+                </div>
+                <br>
+                <br>
+                <h3>留言板块</h3>
+                <form action="/editmessage">
+                    <h5>留言</h5>
+                    <textarea name="mcontext" rows="6" cols="20" th:value="${mcontext}"></textarea>
+                    <h5 th:bgcolor="red" th:text="${mcontext} "></h5>
+                    <h5>回复</h5>
+                    <textarea name="acontext" rows="6" cols="20" th:value="${acontext}"></textarea>
+                    <h5 th:bgcolor="red" th:text="${acontext}"></h5>
+                    <input type="submit" class="magenta btn" id="sub3" value="编辑" >
+                    <input type="reset" class="magenta btn" id="re3"  value="重置"  >
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div id="content">
+            <div id="jianjie">
+                <h1>个人简介</h1>
+
+                <form action="/edittext">
+                    <div>
+                      <textarea name="text" rows="10" cols="50" th:value="${ntext}"></textarea>
+                        <h3 th:text="${ntext}"></h3>
+
+                    </div>
+                    <input type="submit" class="magenta btn" id="sub2" value="编辑" >
+                    <input type="reset" class="magenta btn" id="re2"  value="重置"  >
+
+                </form>
+            </div>
+            <div id="tiezi">
+                <h1>个人博文</h1>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <td>博客编号</td>
+                        <td>博客内容</td>
+                        <td>所评价课程号</td>
+                        <td>所评价课程名</td>
+                        <td>课程打分</td>
+                    </tr>
+                    </thead>
+                    <tr th:each="allblogs:${allblogs}" >
+                        <td th:text="${allblogs.bid}"></td>
+                        <td th:text="${allblogs.blog}"></td>
+                        <td th:text="${allblogs.cid}"></td>
+                        <td th:text="${allblogs.cname}"></td>
+                        <td th:text="${allblogs.sgrade}"></td>
+                    </tr>
+                </table>
+                <a class="magenta btn" href="/openblog">发博文</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>diango版权 2019-2020</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

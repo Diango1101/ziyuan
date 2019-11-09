@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>资源网</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+
+
+
+<div id="container">
+    <div id="header">
+        <p>	<img src="../static/images/banner1 (2).jpg"></p>
+        <div id="icon-list">
+            <img src="../static/images/th.jpg"/><a href="#" th:text="'hi, ' + ${sid} + '!'"></a>
+        </div>
+    </div>
+
+    <div id="nav">
+        <p>
+            <a href="/tomyblog">个人主页</a>|
+            <a href="/showjingping">精品课程</a>|
+            <a href="/QueryByClick-s">课程查询</a>|
+            <a href="/GetMyCour">我的课程</a>|
+        </p>
+    </div>
+
+    <div id="main">
+        <div id="aside">
+            <h2>今日推荐教师</h2>
+            <table >
+                <p>liping  擅长.net全栈开发</p>
+                <p>siiiim  擅长python数据挖掘方向</p>
+                <p>koem   在爬虫与反爬虫领域颇有建树</p>
+                <p>diango   django网页开发方面专家</p>
+            </table>
+            <div id="imglist">
+                <div class="polaroid rotate_left">
+                    <img src="../static/images/1.jpg"  />
+                </div>
+
+                <div class="polaroid rotate_right">
+                    <img src="../static/images/2.jpg"  />
+                </div>
+                <div class="polaroid rotate_left">
+                    <img src="../static/images/3.jpg"  />
+                </div>
+
+                <div class="polaroid rotate_right">
+                    <img src="../static/images/4.jpg"  />
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div id="content">
+            <div class="query">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <td>学生ID</td>
+                        <td>课程文档</td>
+                        <td>实践代码</td>
+                    </tr>
+                    </thead>
+                    <tr th:each="sbCid:${sbCids}" >
+                        <td ><a th:bgcolor="black" th:text="${sbCid.Sid}" th:href="@{totourmyblog(id=${sbCid.Sid})}"> </a></td>
+                        <td th:text="${sbCid.Work_word}"></td>
+                        <!--<td th:text="${#dates.format(sbCid.UploadTime, 'dd/mm/yyyy')}"></td>-->
+                        <td th:text="${sbCid.Work_code}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>李伟捷hhhhhhhh版权 2019-2020</p>
+    </div>
+</div>
+
+
+</body>
+</html>

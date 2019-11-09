@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>资源网</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/script2.js"></script>
+    <script type="text/javascript">
+        UploadCode=function(){
+            document.getElementById("Code").click();
+        }
+    </script>
+</head>
+<body>
+
+
+
+<div id="container">
+    <div id="header">
+        <p>	<img src="../static/images/banner1 (2).jpg"></p>
+
+    </div>
+
+    <div id="nav">
+        <p>
+            <a href="/tomyblogt">个人主页</a>|
+            <a href="/showjingping">精品课程</a>|
+            <a href="QueryByClick">课程查询</a>|
+            <a href="/opennewcour">申请开课</a>|
+            <a href="/tomanagement">管理课程</a>|
+        </p>
+    </div>
+
+    <div id="main">
+        <div id="aside">
+            <h2></h2>
+
+            <div id="imglist" >
+                <div class="polaroid rotate_left">
+                    <img src="../static/images/1.jpg"  />
+                </div>
+
+            </div>
+            <h2>查询课程平均评分</h2>
+            <form action="/getaverage">
+                <input type="text" name="cid">
+                <input type="submit" value="提交">
+            </form>
+            <h3 name="gradetext" th:text="'该课平均得分为'+${grade}"></h3>
+            <h2>所开课程</h2>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                <tr>
+                    <td>课程序号</td>
+                    <td>课程名</td>
+                    <td>标签</td>
+                </tr>
+                </thead>
+                <tr th:each="course:${Allcourses}" >
+                    <td th:text="${course.Cid}"></td>
+                    <td th:text="${course.Cname}"></td>
+                    <td th:text="${course.Label}"></td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <div id="content">
+
+            <h1>课程学生</h1>
+            <br />
+            <br />
+            <form action="/getallstu">
+                <input type="text" name="cidtostu" placeholder=输入课程号>
+                <input type="submit" value="查找">
+            </form>
+            <table class="table table-striped table-hover table-bordered">
+                <tr>
+                    <th width=90px;>学号</th>
+                    <th width=80px;>作业名</th>
+                    <th width=80px;>截图</th>
+                    <th width=80px;>实践代码</th>
+                    <th width=80px;>实践文档</th>
+                    <th width="80px">分数</th>
+                    <th width="80px"></th>
+                </tr>
+                <tr th:each="mycour:${Allstus}">
+                    <form th:action="@{setgrade(Sid=${mycour.Sid},Cid=${mycour.Cid})}" enctype="multipart/form-data" method="post" name="form2">
+                        <td  th:text="${mycour.Sid}" ></td>
+                        <td  th:text="${mycour.Work_name}" ></td><!-- th:href="@{#Cid=${}"  自己加你要的东西-->
+                        <td >
+                            <div align="center">
+                                <span th:text="${mycour.Work_picture1}"></span>
+                                <a class="blue btn" th:href="@{/Download(filename=${mycour.Work_picture1})}  ";>下载</a>
+                            </div>
+                        </td>
+                        <td >
+                            <div align="center">
+                                <span th:text="${mycour.Work_code}"></span>
+                                <a class="blue btn" th:href="@{/Downloadcode(filename=${mycour.Work_code})}  ";>下载</a>
+                            </div>
+                        </td>
+                        <td >
+                            <div align="center">
+                                <span th:text="${mycour.Work_word}"></span>
+                                <a class="blue btn" th:href="@{/Download(filename=${mycour.Work_word})}  ";>下载</a>
+                            </div>
+                        </td>
+                        <td>
+
+                                <input  type="text" th:name="${mycour.Sid}+${mycour.Cid}+coursegrade "  th:text="${mycour.Grade}" style="width: 40px" >
+
+                        </td>
+                        <td>
+                            <input type="submit" class="blue btn">
+                        </td>
+                    </form>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    1
+    <div id="footer">
+        <p>diango版权 2019-2020</p>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>

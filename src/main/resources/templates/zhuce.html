@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>log</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/log.css" />
+	</head>
+	<body>
+      	<form name="form1" action="registerin" method="post">
+     		 <h1>高校资源管理系统</h1>
+			<input class=input_1 id=id size=15  name="id"  placeholder=ID><br />
+			<input class=input_1 id=username type=text size=15 name="username" placeholder=用户名><br />
+			<input class=input_1 id=password type=password size=10 name=password placeholder=密码><br />
+			<input class=input_1 id=password2 type=password size=10 name=password2 placeholder=重复密码><br />
+  	 		<span class="radio_box">
+               <input type="radio" id="radio_1" name="re-gettype" value="student"  checked>
+               <label for="radio_1"></label>
+              学生
+        	</span>
+        	<span class="radio_box">
+               <input type="radio" id="radio_2" name="re-gettype" value="teacher" >
+               <label for="radio_2"></label>
+              老师
+        	</span>
+    		<br/>
+            <input class=input_3 type="button"   onclick="register()"     id="zhuce"  value="注册" />
+            <input class=input_3 type="button"  onclick=document.form1.reset() value="重置" /> 
+           
+     	</form>
+        <script type="text/javascript" src="../static/js/script.js"></script>
+  </body>
+</html>
